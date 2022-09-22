@@ -22,6 +22,7 @@
 				"typescript",
 				"autoprefixer",
 				"vite",
+				"rollup",
 				"pnpm"
 			],
 			"automerge": true
