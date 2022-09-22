@@ -15,8 +15,7 @@ jobs:
     strategy:
       matrix:
         file:
-          #- default
-          #- renovate-config
+          - default
           - sveltekit
     env:
       RENOVATE_CONFIG_FILE: ${{ matrix.file }}.json
