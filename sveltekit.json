@@ -25,7 +25,8 @@
 				"rollup",
 				"pnpm"
 			],
-			"automerge": true
+			"automerge": true,
+			"schedule": ["before 2am on monday"]
 		}
 	],
 	"hostRules": [
