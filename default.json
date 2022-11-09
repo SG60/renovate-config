@@ -10,6 +10,7 @@
 		":automergeTesters"
   ],
   "labels": ["dependencies"],
+  "platformAutomerge": true,
   "hostRules": [
   	{
   		"matchHost": "https://npm.pkg.github.com/",
