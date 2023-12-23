@@ -2,7 +2,7 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:base",
-    "schedule:nonOfficeHours",
+    "schedule:monthly",
     "group:linters",
 		"group:recommended",
 		"group:monorepos",
