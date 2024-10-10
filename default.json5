@@ -5,7 +5,9 @@
 		"schedule:monthly",
 		"group:linters",
 		":automergeLinters",
-		":automergeTesters"
+		":automergeTesters",
+		"group:recommended",
+		"group:monorepos"
 	],
 	"labels": ["dependencies"],
 	"platformAutomerge": true,
@@ -35,6 +37,30 @@
 			],
 			"automerge": true,
 			"schedule": ["before 2am on monday"]
+		},
+		{
+			"groupName": "sanity packages",
+			"extends": ["monorepo:sanity"],
+			"enabled": true,
+			"matchUpdateTypes": [
+				"digest",
+				"patch",
+				"minor",
+				"major"
+			],
+			"matchPackageNames": [
+				"/^@sanity//",
+				"/sanity-plugin-*/"
+			]
+		},
+		{
+			"extends": ["monorepo:sanity"],
+			"matchUpdateTypes": [
+				"digest",
+				"patch",
+				"minor"
+			],
+			"automerge": true
 		}
 	]
 }
