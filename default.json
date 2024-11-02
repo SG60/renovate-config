@@ -61,6 +61,19 @@
 				"minor"
 			],
 			"automerge": true
+		},
+		{
+			"extends": [
+				"monorepo:opentelemetry-rust"
+			],
+			"matchSourceUrls": ["https://github.com/tokio-rs/tracing-opentelemetry"],
+			"groupName": "opentelemetry-rust monorepo and tracing-opentelemetry",
+			"matchUpdateTypes": [
+				"digest",
+				"patch",
+				"minor",
+				"major"
+			]
 		}
 	]
 }
