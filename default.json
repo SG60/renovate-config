@@ -10,6 +10,7 @@
 		"group:monorepos"
 	],
 	"labels": ["dependencies"],
+	"timezone": "Europe/London",
 	"platformAutomerge": true,
 	"packageRules": [
 		{
