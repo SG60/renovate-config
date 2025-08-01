@@ -7,6 +7,7 @@
 		":automergeLinters",
 		":automergeTesters",
 		"group:recommended",
+		":automergePatch",
 		"group:monorepos",
 		"customManagers:dockerfileVersions",
 		"customManagers:githubActionsVersions"
@@ -14,6 +15,7 @@
 	"labels": ["dependencies"],
 	"timezone": "Europe/London",
 	"platformAutomerge": true,
+	"minimumReleaseAge": "14 days",
 	"packageRules": [
 		{
 			"matchPackagePatterns": ["^@sveltejs/"],
@@ -68,7 +70,22 @@
 				"minor",
 				"major"
 			]
-		}
+		},
+		{
+			"matchPackageNames": ["/^@samsveltecomponents//", "/^@samgreening//"], // Internal NPM packages
+			"matchDatasource": ["npm"]
+			"minimumReleaseAge": "0 days" // Disable minimumReleaseAge for these internal packages
+    },
+    {
+      "matchDatasources": ["github-tags", "github-releases"], // Match GitHub dependencies
+      "matchPackageNames": ["/^SG60//"], // My GitHub internal deps
+      "minimumReleaseAge": "0 days" // Disable minimumReleaseAge for my internal GitHub dependencies
+    },
+		{
+      "matchDatasources": ["git-refs"], // Match GitHub dependencies through git-refs
+      "matchPackageNames": ["/^https://github.com/SG60//"], // My GitHub internal deps
+      "minimumReleaseAge": "0 days" // Disable minimumReleaseAge for my internal GitHub dependencies
+    }
 	],
   "customManagers": [
     {
