@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - '**.json'
+  workflow_dispatch:
 
 env:
   LOG_LEVEL: debug
@@ -16,13 +17,13 @@ jobs:
     strategy:
       matrix:
         file:
-          - default
-          - sveltekit
+          - default.json
+          - sveltekit.json
     env:
-      RENOVATE_CONFIG_FILE: ${{ matrix.file }}.json
+      RENOVATE_CONFIG_FILE: ${{ matrix.file }}
 
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
       - name: testing ${{ matrix.file }}
-        run: npx -p renovate renovate-config-validator --strict
+        run: npx --yes --package renovate@latest -- renovate-config-validator --strict
