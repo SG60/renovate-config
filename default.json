@@ -7,7 +7,9 @@
 		":automergeLinters",
 		":automergeTesters",
 		"group:recommended",
-		"group:monorepos"
+		"group:monorepos",
+		"customManagers:dockerfileVersions",
+		"customManagers:githubActionsVersions"
 	],
 	"labels": ["dependencies"],
 	"timezone": "Europe/London",
@@ -67,5 +69,56 @@
 				"major"
 			]
 		}
-	]
+	],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/kustomization.yaml/"
+      ],
+      "matchStrings": [
+        "https://github.com/(?<depName>.*/.*?)/releases/download/(?<currentValue>.*?)/"
+      ],
+      "datasourceTemplate": "github-releases"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/kustomization.yaml/"
+      ],
+      "matchStrings": [
+        "https://raw.githubusercontent.com/(?<depName>[^/]*/[^/]*)/(?<currentValue>.*?)/"
+      ],
+      "datasourceTemplate": "github-tags"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/kustomization.yaml/"
+      ],
+      "matchStrings": [
+        "(?<packageName>\\S*\\..*\\/(?<depName>SG60\\/.*?))\\/\\/.*\\?ref=(?<currentDigest>\\S*)"
+      ],
+      "packageNameTemplate": "https://{{{packageName}}}",
+      "currentValueTemplate": "main",
+      "datasourceTemplate": "git-refs"
+    }
+  ],
+  "hostRules": [
+    {
+      "matchHost": "lhr.ocir.io",
+      "username": "lrdyqp2xtoja/github-app-renovate-container-registry-accesser",
+      "password": "{{ secrets.ORACLE_OCIR_CONTAINER_REGISTRY_PASSWORD }}"
+    }
+  ],
+  "packageRules": [
+    {
+      "matchPackageNames": [
+        "cloudflare/cloudflared"
+      ],
+      "extends": [
+        "schedule:weekly"
+      ]
+    }
+  ]
 }
