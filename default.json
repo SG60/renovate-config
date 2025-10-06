@@ -7,7 +7,6 @@
 		":automergeLinters",
 		":automergeTesters",
 		"group:recommended",
-		":automergePatch",
 		"group:monorepos",
 		"customManagers:dockerfileVersions",
 		"customManagers:githubActionsVersions"
