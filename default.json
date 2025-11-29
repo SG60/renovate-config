@@ -122,7 +122,8 @@
 		{
 			// Matching Git SHA formatted Docker Tags. Look at the source Git repository instead of the Docker Registry.
 			// Renovate will check the repo for the latest commit SHA, format it as sha-<commit>, and update the Kustomization file.
-			// This one requires placing a comment before.
+			// This one requires placing a comment before. E.G:
+	  		//     # renovate: source=git-refs depName=https://github.com/sg60/toggl-to-sheets
 			"customType": "regex",
       "fileMatch": ["kustomization\\.yaml$"],
       "matchStrings": [
