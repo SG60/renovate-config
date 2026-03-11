@@ -9,7 +9,8 @@
 		"group:recommended",
 		"group:monorepos",
 		"customManagers:dockerfileVersions",
-		"customManagers:githubActionsVersions"
+		"customManagers:githubActionsVersions",
+		":maintainLockFilesMonthly"
 	],
 	"labels": ["dependencies"],
 	"timezone": "Europe/London",
